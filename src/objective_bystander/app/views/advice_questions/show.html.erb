@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @advice_question.user %>
+</p>
+
+<p>
+  <strong>Topic:</strong>
+  <%= @advice_question.topic %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @advice_question.title %>
+</p>
+
+<p>
+  <strong>Desc:</strong>
+  <%= @advice_question.desc %>
+</p>
+
+<%= link_to 'Edit', edit_advice_question_path(@advice_question) %> |
+<%= link_to 'Back', advice_questions_path %>

@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Advice Questions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Topic</th>
+      <th>Title</th>
+      <th>Desc</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @advice_questions.each do |advice_question| %>
+      <tr>
+        <td><%= advice_question.user %></td>
+        <td><%= advice_question.topic %></td>
+        <td><%= advice_question.title %></td>
+        <td><%= advice_question.desc %></td>
+        <td><%= link_to 'Show', advice_question %></td>
+        <td><%= link_to 'Edit', edit_advice_question_path(advice_question) %></td>
+        <td><%= link_to 'Destroy', advice_question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Advice Question', new_advice_question_path %>

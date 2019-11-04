@@ -1,0 +1,2 @@
+module AdviceQuestionsHelper
+end
