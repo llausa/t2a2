@@ -4,6 +4,7 @@
 <br>
 <% if user_signed_in? %>
   <p><%= 'Hello, ' + current_user.email + '!' %></p>
+  <p><%= 'Your role: ' + current_user.roles.first.name %></p>
   <p><%= link_to 'Create Topic', new_topic_path %></p>
   <p><%= link_to 'Create Advice Question', new_advice_question_path %></p>
   <p><%= link_to 'Create Advice Reply', new_advice_reply_path %></p>
