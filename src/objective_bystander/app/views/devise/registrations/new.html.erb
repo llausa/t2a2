@@ -21,6 +21,14 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
+  <div class="field">
+    <%= f.label :roles %>
+
+    <%= f.radio_button :role_ids, Role.where(name: 'Advisor').first.id %> Advisor<br />
+    <%= f.radio_button :role_ids, Role.where(name: 'Advisee').first.id %> Advisee<br />
+  </div>
+
+
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
