@@ -18,7 +18,7 @@ user = User.new
 user.email = 'admin@mail.com'
 user.password = 'Test02'
 user.password_confirmation = 'Test02'
-user.role_ids = 1
+user.role_ids = Role.where(name: 'Admin').first.id
 user.save!
 
 Topic.destroy_all
