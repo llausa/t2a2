@@ -15,5 +15,15 @@
   <%= @topic.desc %>
 </p>
 
+<div>
+  <% if @topic %>
+    <% @questions.each do |question| %>
+      <p><%= '-' + question.title %></p>
+    <% end %>
+  <% else %>
+    <%= 'bruh1' %>
+  <% end %>
+</div>
+
 <%= link_to 'Edit', edit_topic_path(@topic) %> |
 <%= link_to 'Back', topics_path %>
