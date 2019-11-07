@@ -12,9 +12,16 @@ class PagesController < ApplicationController
     else
       @advisor_topics = Topic.where.not(title: 'General' || 'Wealth' || 'Health' || 'Relationships')
     end
+
   end
 
   def user_profile
+    if current_user.roles.first.name.include?('Advisor')
+      @topics = Topic.where(user_id: current_user.id)
+    end
 
+    if current_user.roles.first.name.include?('Advisee')
+      @questions = AdviceQuestion.where(user_id: current_user.id)
+    end
   end
 end

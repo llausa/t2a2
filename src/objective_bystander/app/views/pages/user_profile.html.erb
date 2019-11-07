@@ -1,1 +1,33 @@
-<%= 'Hello Zoomer' %>
+<h1>User Profile</h1>
+
+<% if @topics %>
+  <% @topics.each do |topic| %>
+  <div>
+    <p><%= topic.title %></p>
+    <p><%= topic.desc.truncate(60) %></p>
+    <% if AdviceQuestion.where(topic_id: topic.id) %>
+      <% AdviceQuestion.where(topic_id: topic.id).each do |question| %>
+        <p><%= "- #{question.title} by #{User.find(question.user_id).username}" %></p>
+      <% end %>
+    <% end %>
+    <%= link_to 'See more', topic_path(topic) %>
+  </div>
+  <% end %>
+<% end %>
+
+<hr>
+
+<% if @questions %>
+  <% @questions.each do |question| %>
+  <div>
+    <p><%= question.title %></p>
+    <p><%= question.desc.truncate(60) %></p>
+    <% if AdviceReply.where(advice_question_id: question.id) %>
+      <% AdviceReply.where(advice_question_id: question.id).each do |reply| %>
+        <p><%= "- #{reply.title} by #{User.find(reply.user_id).username}" %></p>
+      <% end %>
+    <% end %>
+    <%= link_to 'See more', advice_question_path(question) %>
+  </div>
+  <% end %>
+<% end %>
