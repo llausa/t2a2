@@ -14,6 +14,7 @@ Role.create!(name: 'Admin')
 
 # ID will vary but here it is: 21
 User.destroy_all
+
 user = User.new
 user.email = 'admin@mail.com'
 user.password = 'Test02'
@@ -22,21 +23,21 @@ user.role_ids = Role.where(name: 'Admin').first.id
 user.save!
 
 Topic.destroy_all
-Topic.create!(user_id: 21,
+Topic.create!(user_id: user.id,
               title: 'General',
               desc: 'This is where you can ask general advice from the Advisors in this site',
             )
 
-Topic.create!(user_id: 21,
+Topic.create!(user_id: user.id,
               title: 'Health',
               desc: 'This is where you can ask Health-related advice from the Advisors in this site',
             )
-Topic.create!(user_id: 21,
+Topic.create!(user_id: user.id,
               title: 'Wealth',
               desc: 'This is where you can ask Wealth-related advice from the Advisors in this site',
             )
 
-Topic.create!(user_id: 21,
+Topic.create!(user_id: user.id,
               title: 'Relationships',
               desc: 'This is where you can ask Relationship-related advice from the Advisors in this site',
             )
