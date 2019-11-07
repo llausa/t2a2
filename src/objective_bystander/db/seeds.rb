@@ -6,11 +6,14 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Role.destroy_all
+
 Role.create!(name: 'Advisor')
 Role.create!(name: 'Advisee')
 Role.create!(name: 'Admin')
 
 # ID will vary but here it is: 21
+User.destroy_all
 user = User.new
 user.email = 'admin@mail.com'
 user.password = 'Test02'
@@ -18,7 +21,7 @@ user.password_confirmation = 'Test02'
 user.role_ids = 1
 user.save!
 
-
+Topic.destroy_all
 Topic.create!(user_id: 21,
               title: 'General',
               desc: 'This is where you can ask general advice from the Advisors in this site',
