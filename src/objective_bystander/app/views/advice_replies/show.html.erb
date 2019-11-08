@@ -1,18 +1,17 @@
 <p id="notice"><%= notice %></p>
+<p>
+  <strong>Title:</strong>
+  <%= @advice_reply.title %>
+</p>
 
 <p>
   <strong>User:</strong>
-  <%= @advice_reply.user %>
+  <%= @advice_reply.user.username %>
 </p>
 
 <p>
   <strong>Advice question:</strong>
-  <%= @advice_reply.advice_question %>
-</p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @advice_reply.title %>
+  <%= @advice_reply.advice_question.title %>
 </p>
 
 <p>
@@ -20,5 +19,8 @@
   <%= @advice_reply.desc %>
 </p>
 
-<%= link_to 'Edit', edit_advice_reply_path(@advice_reply) %> |
-<%= link_to 'Back', advice_replies_path %>
+<% if @advice_reply.user_id == current_user.id %>
+  <%= link_to 'Edit', edit_advice_reply_path(@advice_reply) %> |
+  <%= link_to 'Destroy', @advice_reply, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
+<p><%= link_to 'Back', :back %></p>

@@ -1,11 +1,6 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>User:</strong>
-  <%= @topic.user_id %>
-</p>
-
-<p>
   <strong>Title:</strong>
   <%= @topic.title %>
 </p>
@@ -22,22 +17,12 @@
 
 <div>
   <% unless @questions.empty? %>
+    <h3>Advice Requests for this Topic</h3>
     <% @questions.each do |question| %>
       <p>
         <%= "#{question.title} | by #{User.find(question.user_id).username}" %> |
-        <%= link_to "See Advice", advice_question_path(question.id) %>
+        <%= link_to "See More", advice_question_path(question.id) %>
       </p>
-        <% if @topic.user_id == current_user.id  %>
-          <p><%= link_to "Answer", advice_question_path(question.id) %></p>
-        <% elsif @topic.title == "General"%>
-          <p><%= link_to "Answer", advice_question_path(question.id) %></p>
-        <% elsif @topic.title == "Health"%>
-          <p><%= link_to "Answer", advice_question_path(question.id) %></p>
-        <% elsif @topic.title == "Wealth"%>
-          <p><%= link_to "Answer", advice_question_path(question.id) %></p>
-        <% elsif @topic.title == "Relationships"%>
-          <p><%= link_to "Answer", advice_question_path(question.id) %></p>
-        <% end %>
     <% end %>
   <% else %>
     <p>No Questions yet...</p>

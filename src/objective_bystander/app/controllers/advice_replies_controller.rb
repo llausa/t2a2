@@ -1,5 +1,6 @@
 class AdviceRepliesController < ApplicationController
   before_action :set_advice_reply, only: [:show, :edit, :update, :destroy]
+  before_action :require_permission, only: [:edit, :update, :destroy]
 
   # GET /advice_replies
   # GET /advice_replies.json
@@ -59,6 +60,12 @@ class AdviceRepliesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to advice_replies_url, notice: 'Advice reply was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def require_permission
+    if current_user != AdviceReply.find(params[:id]).user
+      redirect_to root_path
     end
   end
 

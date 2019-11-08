@@ -17,13 +17,13 @@
 </p>
 
 <div>
-  <% if @replies %>
+  <% unless @replies.empty? %>
     <% unless @replies.empty? %>
       <h3>Replies:</h3>
       <% @replies.each do |reply| %>
       <div>
         <p><%= reply.title %></p>
-        <p><%= reply.desc %></p>
+        <p><%= reply.desc %> | <%= link_to "See More", advice_reply_path(reply.id) %></p>
       </div>
       <% end %>
     <% end %>
@@ -37,7 +37,16 @@
   <%= link_to 'Destroy', @advice_question, method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>
 
-<% if Topic.find(@advice_question.topic_id).user_id == current_user.id %>
-  <p><%= 'bruh' %></p>
-<% end %>
-<%= link_to 'Back', :back %>
+<%# if @advice_question.topic.user_id == current_user.id %>
+  <%# link_to "Answer", advice_question_path(question.id) %>
+<%# elsif @advice_question.title == "General"%>
+  <%# link_to "Answer", advice_question_path(question.id) %>
+<%# elsif @advice_question.title == "Health"%>
+  <%# link_to "Answer", advice_question_path(question.id) %>
+<%# elsif @advice_question.title == "Wealth"%>
+  <%# link_to "Answer", advice_question_path(question.id) %>
+<%# elsif @advice_question.title == "Relationships"%>
+  <%# link_to "Answer", advice_question_path(question.id) %>
+<%# end %>
+
+<p><%= link_to 'Back', :back %></p>
