@@ -28,7 +28,11 @@ class AdviceQuestionsController < ApplicationController
   # POST /advice_questions
   # POST /advice_questions.json
   def create
+    pp params
     @advice_question = AdviceQuestion.new(advice_question_params)
+    @advice_question.topic = Topic.find(params[:topic_id])
+    @advice_question.user = current_user
+
 
     respond_to do |format|
       if @advice_question.save

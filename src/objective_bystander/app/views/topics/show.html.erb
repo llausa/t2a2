@@ -14,21 +14,23 @@
   <%= @topic.desc %>
 </p>
 
-<% if @topic.title == "General" %>
-  <h2>Answer</h2>
-  <%= render 'advice_questions/form', advice_question: @advice_question %>
-<% elsif @topic.title == "Health" %>
-  <h2>Answer</h2>
-  <%= render 'advice_questions/form', advice_question: @advice_question %>
-<% elsif @topic.title == "Wealth" %>
-  <h2>Answer</h2>
-  <%= render 'advice_questions/form', advice_question: @advice_question %>
-<% elsif @topic.title == "Relationships" %>
-  <h2>Answer</h2>
-  <%= render 'advice_questions/form', advice_question: @advice_question %>
-<% elsif @topic.user_id == current_user.id %>
-  <h2>Answer</h2>
-  <%= render 'advice_questions/form', advice_question: @advice_question %>
+<% if @advice_question %>
+  <% if @topic.title == "General" %>
+    <h2>Add Question</h2>
+    <%= render 'advice_questions/form', advice_question: @advice_question %>
+  <% elsif @topic.title == "Health" %>
+    <h2>Add Question</h2>
+    <%= render 'advice_questions/form', advice_question: @advice_question %>
+  <% elsif @topic.title == "Wealth" %>
+    <h2>Add Question</h2>
+    <%= render 'advice_questions/form', advice_question: @advice_question %>
+  <% elsif @topic.title == "Relationships" %>
+    <h2>Add Question</h2>
+    <%= render 'advice_questions/form', advice_question: @advice_question %>
+  <% else %> <%# @topic.user_id == current_user.id %>
+    <h2>Add Question</h2>
+    <%= render 'advice_questions/form', advice_question: @advice_question %>
+  <% end %>
 <% end %>
 
 <div>

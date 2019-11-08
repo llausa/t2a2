@@ -14,7 +14,12 @@ class TopicsController < ApplicationController
   def show
     @topic = Topic.find(params[:id])
     @questions = AdviceQuestion.where(topic_id: @topic.id)
-    @advice_question = AdviceQuestion.new
+
+    if current_user.roles.first.name.include?('Advisee')
+      @advice_question = AdviceQuestion.new
+      @topic_id = Topic.find(params[:id]).id.to_s
+    end
+
   end
 
   # GET /topics/new

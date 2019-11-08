@@ -11,15 +11,20 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
-  </div>
+  <%# <div class="field"> %>
+    <%# form.label :user_id %>
+    <%# form.text_field :user_id %>
+  <%# </div> %>
 
-  <div class="field">
-    <%= form.label :topic_id %>
-    <%= form.text_field :topic_id %>
-  </div>
+  <%= @topic_id %>
+  <%= @topic_id.class %>
+  <%# <div class="field"> %>
+    <%# form.label :topic_id %>
+    <%# form.text_field :topic_id %>
+  <%# </div> %>
+
+  <%# select_tag :topic_id, options_for_select(Topic.find(@topic_id), @topic.title) %>
+  <%= hidden_field_tag :topic_id, @topic_id %>
 
   <div class="field">
     <%= form.label :title %>
