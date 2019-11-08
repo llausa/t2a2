@@ -1,33 +1,55 @@
 <h1>User Profile</h1>
 
+<p>Your Usernam: <%= current_user.username %></p>
+<p>Your Email: <%= current_user.email %></p>
+<%# link_to  %>
+<%= link_to "Edit your profile", edit_user_registration_path %>
+
 <% if @topics %>
-  <% @topics.each do |topic| %>
-  <div>
-    <p><%= topic.title %></p>
-    <p><%= topic.desc.truncate(60) %></p>
-    <% if AdviceQuestion.where(topic_id: topic.id) %>
-      <% AdviceQuestion.where(topic_id: topic.id).each do |question| %>
-        <p><%= "- #{question.title} by #{User.find(question.user_id).username}" %></p>
+  <% unless @topics.empty? %>
+    <h3>Your Topics:</h3>
+    <% @topics.each do |topic| %>
+    <div>
+      <p><%= topic.title %></p>
+      <p><%= topic.desc.truncate(60) %></p>
+      <% if AdviceQuestion.where(topic_id: topic.id) %>
+        <% AdviceQuestion.where(topic_id: topic.id).each do |question| %>
+          <p><%= "- #{question.title} by #{User.find(question.user_id).username}" %></p>
+        <% end %>
       <% end %>
+      <%= link_to 'See more', topic_path(topic) %>
+    </div>
     <% end %>
-    <%= link_to 'See more', topic_path(topic) %>
-  </div>
   <% end %>
 <% end %>
 
-<hr>
+<% if @replies %>
+  <% unless @replies.empty? %>
+    <h3>Your Replies:</h3>
+    <% @replies.each do |reply| %>
+    <div>
+      <p><%= reply.title %></p>
+      <p><%= reply.desc.truncate(60) %></p>
+      <%= link_to 'See more', advice_reply_path(reply) %>
+    </div>
+    <% end %>
+  <% end %>
+<% end %>
 
 <% if @questions %>
-  <% @questions.each do |question| %>
-  <div>
-    <p><%= question.title %></p>
-    <p><%= question.desc.truncate(60) %></p>
-    <% if AdviceReply.where(advice_question_id: question.id) %>
-      <% AdviceReply.where(advice_question_id: question.id).each do |reply| %>
-        <p><%= "- #{reply.title} by #{User.find(reply.user_id).username}" %></p>
+  <% unless @questions.empty? %>
+    <h3>Your Questions:
+    <% @questions.each do |question| %>
+    <div>
+      <p><%= question.title %></p>
+      <p><%= question.desc.truncate(60) %></p>
+      <% if AdviceReply.where(advice_question_id: question.id) %>
+        <% AdviceReply.where(advice_question_id: question.id).each do |reply| %>
+          <p><%= "- #{reply.title} by #{User.find(reply.user_id).username}" %></p>
+        <% end %>
       <% end %>
+      <%= link_to 'See more', advice_question_path(question) %>
+    </div>
     <% end %>
-    <%= link_to 'See more', advice_question_path(question) %>
-  </div>
   <% end %>
 <% end %>

@@ -3,6 +3,8 @@
 class User < ApplicationRecord
   rolify
   has_many :topics, dependent: :destroy
+  has_many :advice_replies, dependent: :destroy
+
   has_many :advice_questions, dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -37,5 +39,5 @@ class User < ApplicationRecord
 
   def wordwithnumber(words)
     words[rand(words.length)]+(rand(900)+100).to_s()
- end
+  end
 end

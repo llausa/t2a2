@@ -11,6 +11,10 @@
 </p>
 
 <p>
+  <%= "created by #{User.find(@topic.user_id).username}" %>
+</p>
+
+<p>
   <strong>Desc:</strong>
   <%= @topic.desc %>
 </p>

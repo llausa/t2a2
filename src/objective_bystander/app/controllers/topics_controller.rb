@@ -4,6 +4,7 @@ class TopicsController < ApplicationController
   # GET /topics
   # GET /topics.json
   def index
+    redirect_to root_path
     @topics = Topic.all
   end
 
@@ -11,7 +12,7 @@ class TopicsController < ApplicationController
   # GET /topics/1.json
   def show
     @topic = Topic.find(params[:id])
-  @questions = AdviceQuestion.where(topic_id: @topic.id)
+    @questions = AdviceQuestion.where(topic_id: @topic.id)
   end
 
   # GET /topics/new

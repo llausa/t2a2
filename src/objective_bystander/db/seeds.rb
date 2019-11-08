@@ -156,3 +156,17 @@ advice_question_5 = AdviceQuestion.create!(
                       topic_id: topic_10.id,
                       title: 'Bring to the table win-win survival strategies to ensure proactive domination.',
                       desc: 'At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution.')
+
+user_advisor_2
+# AdviceReply(id: integer, user_id: integer, advice_question_id: integer, title: text, desc: text, created_at: datetime, updated_at: datetime)
+advice_reply_1 = AdviceReply.create!(
+                  user_id: user_advisor_2.id,
+                  advice_question_id: advice_question_3.id,
+                  title: 'Ok Boomer, how do I Skdeet or Skedaddle?',
+                  desc: 'Epstein didnt kill himself')
+
+advice_reply_1 = AdviceReply.create!(
+                  user_id: user_advisor_2.id,
+                  advice_question_id: advice_question_5.id,
+                  title: 'Ok Zoomer, how do I Skdeet or Skedaddle?',
+                  desc: 'Epstein did kill himself')

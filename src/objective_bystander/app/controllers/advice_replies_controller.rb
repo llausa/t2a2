@@ -4,6 +4,7 @@ class AdviceRepliesController < ApplicationController
   # GET /advice_replies
   # GET /advice_replies.json
   def index
+    redirect_to root_path
     @advice_replies = AdviceReply.all
   end
 

@@ -18,6 +18,7 @@ class PagesController < ApplicationController
   def user_profile
     if current_user.roles.first.name.include?('Advisor')
       @topics = Topic.where(user_id: current_user.id)
+      @replies = AdviceReply.where(user_id: current_user.id)
     end
 
     if current_user.roles.first.name.include?('Advisee')

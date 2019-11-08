@@ -20,7 +20,7 @@
 <div>
   <%= link_to "#{@general_topic.title} | #{@general_topic.desc}", topic_path(@general_topic) %>
   <% if AdviceQuestion.where(topic_id: @general_topic.id) %>
-    <% AdviceQuestion.where(topic_id: @general_topic.id).each do |q| %>
+    <% AdviceQuestion.where(topic_id: @general_topic.id)[0..2].each do |q| %>
       <p><%= q.title %></p>
     <% end %>
   <% else %>
