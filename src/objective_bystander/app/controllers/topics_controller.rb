@@ -14,6 +14,7 @@ class TopicsController < ApplicationController
   def show
     @topic = Topic.find(params[:id])
     @questions = AdviceQuestion.where(topic_id: @topic.id)
+    @advice_question = AdviceQuestion.new
   end
 
   # GET /topics/new
