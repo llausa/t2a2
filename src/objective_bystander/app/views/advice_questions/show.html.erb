@@ -32,6 +32,9 @@
   <h2>Answer</h2>
   <%= render 'advice_replies/form', advice_reply: @advice_reply %>
 <% elsif Topic.find(@advice_question.topic_id).user_id == current_user.id %>
+
+  <%= @advice_question_id %>
+  <%= @advice_question_id.class %>
   <h2>Answer</h2>
   <%= render 'advice_replies/form', advice_reply: @advice_reply %>
 <% end %>

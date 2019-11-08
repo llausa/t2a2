@@ -11,15 +11,16 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
-  </div>
+  <%# <div class="field"> %>
+    <%# form.label :user_id %>
+    <%# form.text_field :user_id %>
+  <%# </div> %>
 
-  <div class="field">
-    <%= form.label :advice_question_id %>
-    <%= form.text_field :advice_question_id %>
-  </div>
+  <%# <div class="field"> %>
+    <%# form.label :advice_question_id %>
+    <%# form.text_field :advice_question_id %>
+  <%# </div> %>
+  <%= hidden_field_tag :advice_question_id, @advice_question_id %>
 
   <div class="field">
     <%= form.label :title %>

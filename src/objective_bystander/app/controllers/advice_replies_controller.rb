@@ -12,6 +12,7 @@ class AdviceRepliesController < ApplicationController
   # GET /advice_replies/1
   # GET /advice_replies/1.json
   def show
+
   end
 
   # GET /advice_replies/new
@@ -26,7 +27,12 @@ class AdviceRepliesController < ApplicationController
   # POST /advice_replies
   # POST /advice_replies.json
   def create
+    # @advice_question.topic = Topic.find(params[:topic_id])
+    # @advice_question.user = current_user
+
     @advice_reply = AdviceReply.new(advice_reply_params)
+    @advice_reply.advice_question = AdviceQuestion.find(params[:advice_question_id])
+    @advice_reply.user = current_user
 
     respond_to do |format|
       if @advice_reply.save

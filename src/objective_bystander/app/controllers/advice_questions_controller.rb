@@ -13,7 +13,12 @@ class AdviceQuestionsController < ApplicationController
   # GET /advice_questions/1.json
   def show
     @replies = AdviceReply.where(advice_question_id: params[:id])
-    @advice_reply = AdviceReply.new
+
+    if current_user.roles.first.name.include?('Advisor')
+      @advice_reply = AdviceReply.new
+      # @topic_id = Topic.find(params[:id]).id.to_s
+      @advice_question_id = AdviceQuestion.find(params[:id]).id.to_s
+    end
   end
 
   # GET /advice_questions/new
@@ -28,7 +33,6 @@ class AdviceQuestionsController < ApplicationController
   # POST /advice_questions
   # POST /advice_questions.json
   def create
-    pp params
     @advice_question = AdviceQuestion.new(advice_question_params)
     @advice_question.topic = Topic.find(params[:topic_id])
     @advice_question.user = current_user
