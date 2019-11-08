@@ -38,6 +38,7 @@ class AdviceQuestionsController < ApplicationController
     @advice_question.topic = Topic.find(params[:topic_id])
     @advice_question.user = current_user
 
+    @advice_question.img.attach(params[:advice_question][:img])
 
     respond_to do |format|
       if @advice_question.save
@@ -88,6 +89,6 @@ class AdviceQuestionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def advice_question_params
-      params.require(:advice_question).permit(:user_id, :topic_id, :title, :desc)
+      params.require(:advice_question).permit(:user_id, :topic_id, :title, :desc, :img)
     end
 end

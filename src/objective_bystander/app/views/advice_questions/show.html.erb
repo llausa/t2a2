@@ -10,7 +10,7 @@
   <strong>Created by:</strong> <%= @advice_question.user.username %>
 </p>
 <p>
-  <strong>Topic:</strong><%= @advice_question.topic.title %>
+  <strong>Topic: </strong><%= @advice_question.topic.title %>
 </p>
 
 <p>
@@ -35,6 +35,12 @@
     <h2>Answer</h2>
     <%= render 'advice_replies/form', advice_reply: @advice_reply %>
   <% end %>
+<% end %>
+
+<% if @advice_question.img.attached? %>
+  <p class="book-item">
+    <%= image_tag @advice_question.img, width: 200 %>
+  </p>
 <% end %>
 
 <div>
