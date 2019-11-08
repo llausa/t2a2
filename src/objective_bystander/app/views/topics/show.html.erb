@@ -17,11 +17,11 @@
 
 <div>
   <% unless @questions.empty? %>
-    <h3>Advice Requests for this Topic</h3>
+    <h3>Advice Questions for this Topic</h3>
     <% @questions.each do |question| %>
       <p>
         <%= "#{question.title} | by #{User.find(question.user_id).username}" %> |
-        <%= link_to "See More", advice_question_path(question.id) %>
+        <%= link_to "See Replies", advice_question_path(question.id) %>
       </p>
     <% end %>
   <% else %>

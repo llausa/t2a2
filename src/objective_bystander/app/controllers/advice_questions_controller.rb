@@ -13,6 +13,7 @@ class AdviceQuestionsController < ApplicationController
   # GET /advice_questions/1.json
   def show
     @replies = AdviceReply.where(advice_question_id: params[:id])
+    @advice_reply = AdviceReply.new
   end
 
   # GET /advice_questions/new

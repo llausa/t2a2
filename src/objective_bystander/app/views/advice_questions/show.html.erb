@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<h1>Question</h1>
+
 <p>
   <strong>Title:</strong><%= @advice_question.title %>
 </p>
@@ -15,6 +17,24 @@
   <strong>Desc:</strong>
   <%= @advice_question.desc %>
 </p>
+
+
+<% if Topic.find(@advice_question.topic_id).title == "General" %>
+  <h2>Answer</h2>
+  <%= render 'advice_replies/form', advice_reply: @advice_reply %>
+<% elsif Topic.find(@advice_question.topic_id).title == "Health" %>
+  <h2>Answer</h2>
+  <%= render 'advice_replies/form', advice_reply: @advice_reply %>
+<% elsif Topic.find(@advice_question.topic_id).title == "Wealth" %>
+  <h2>Answer</h2>
+  <%= render 'advice_replies/form', advice_reply: @advice_reply %>
+<% elsif Topic.find(@advice_question.topic_id).title == "Relationships" %>
+  <h2>Answer</h2>
+  <%= render 'advice_replies/form', advice_reply: @advice_reply %>
+<% elsif Topic.find(@advice_question.topic_id).user_id == current_user.id %>
+  <h2>Answer</h2>
+  <%= render 'advice_replies/form', advice_reply: @advice_reply %>
+<% end %>
 
 <div>
   <% unless @replies.empty? %>
@@ -36,17 +56,5 @@
   <%= link_to 'Edit', edit_advice_question_path(@advice_question) %> |
   <%= link_to 'Destroy', @advice_question, method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>
-
-<%# if @advice_question.topic.user_id == current_user.id %>
-  <%# link_to "Answer", advice_question_path(question.id) %>
-<%# elsif @advice_question.title == "General"%>
-  <%# link_to "Answer", advice_question_path(question.id) %>
-<%# elsif @advice_question.title == "Health"%>
-  <%# link_to "Answer", advice_question_path(question.id) %>
-<%# elsif @advice_question.title == "Wealth"%>
-  <%# link_to "Answer", advice_question_path(question.id) %>
-<%# elsif @advice_question.title == "Relationships"%>
-  <%# link_to "Answer", advice_question_path(question.id) %>
-<%# end %>
 
 <p><%= link_to 'Back', :back %></p>
