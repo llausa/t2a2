@@ -1,18 +1,14 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>User:</strong>
-  <%= @advice_question.user %>
+  <strong>Title:</strong><%= @advice_question.title %>
 </p>
 
 <p>
-  <strong>Topic:</strong>
-  <%= @advice_question.topic %>
+  <strong>Created by:</strong> <%= @advice_question.user.username %>
 </p>
-
 <p>
-  <strong>Title:</strong>
-  <%= @advice_question.title %>
+  <strong>Topic:</strong><%= @advice_question.topic.title %>
 </p>
 
 <p>
@@ -20,5 +16,28 @@
   <%= @advice_question.desc %>
 </p>
 
-<%= link_to 'Edit', edit_advice_question_path(@advice_question) %> |
-<%= link_to 'Back', advice_questions_path %>
+<div>
+  <% if @replies %>
+    <% unless @replies.empty? %>
+      <h3>Replies:</h3>
+      <% @replies.each do |reply| %>
+      <div>
+        <p><%= reply.title %></p>
+        <p><%= reply.desc %></p>
+      </div>
+      <% end %>
+    <% end %>
+  <% else %>
+    <%= 'No replies yet...' %>
+  <% end %>
+</div>
+
+<% if @advice_question.user_id == current_user.id %>
+  <%= link_to 'Edit', edit_advice_question_path(@advice_question) %> |
+  <%= link_to 'Destroy', @advice_question, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
+
+<% if Topic.find(@advice_question.topic_id).user_id == current_user.id %>
+  <p><%= 'bruh' %></p>
+<% end %>
+<%= link_to 'Back', :back %>

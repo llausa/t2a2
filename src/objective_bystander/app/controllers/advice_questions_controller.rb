@@ -1,5 +1,6 @@
 class AdviceQuestionsController < ApplicationController
   before_action :set_advice_question, only: [:show, :edit, :update, :destroy]
+  before_action :require_permission, only: [:edit, :update, :destroy]
 
   # GET /advice_questions
   # GET /advice_questions.json
@@ -11,6 +12,7 @@ class AdviceQuestionsController < ApplicationController
   # GET /advice_questions/1
   # GET /advice_questions/1.json
   def show
+    @replies = AdviceReply.where(advice_question_id: params[:id])
   end
 
   # GET /advice_questions/new
@@ -59,6 +61,12 @@ class AdviceQuestionsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to advice_questions_url, notice: 'Advice question was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def require_permission
+    if current_user != AdviceQuestion.find(params[:id]).user
+      redirect_to root_path
     end
   end
 

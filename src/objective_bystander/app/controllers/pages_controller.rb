@@ -7,7 +7,7 @@ class PagesController < ApplicationController
     @health_topic = Topic.find_by(title: 'Health')
     @relationships_topic = Topic.find_by(title: 'Relationships')
 
-    if Topic.all[4..-1].empty?
+    if Topic.all[3..-1].empty?
       @msg = 'bruh'
     else
       @advisor_topics = Topic.where.not(title: 'General' || 'Wealth' || 'Health' || 'Relationships')

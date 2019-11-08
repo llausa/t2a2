@@ -14,14 +14,16 @@
       <p><%= topic.desc.truncate(60) %></p>
       <% if AdviceQuestion.where(topic_id: topic.id) %>
         <% AdviceQuestion.where(topic_id: topic.id).each do |question| %>
-          <p><%= "- #{question.title} by #{User.find(question.user_id).username}" %></p>
+          <p><%= "- #{question.title} | by #{User.find(question.user_id).username}" %></p>
         <% end %>
       <% end %>
       <%= link_to 'See more', topic_path(topic) %>
     </div>
     <% end %>
   <% end %>
+  <p><%= link_to 'Create Topic', new_topic_path %></p>
 <% end %>
+
 
 <% if @replies %>
   <% unless @replies.empty? %>
@@ -52,4 +54,5 @@
     </div>
     <% end %>
   <% end %>
+  <p><%= link_to 'Create Advice Question', new_advice_question_path %></p>
 <% end %>

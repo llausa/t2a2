@@ -1,5 +1,6 @@
 class TopicsController < ApplicationController
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
+  before_action :require_permission, only: [:edit, :update, :destroy]
 
   # GET /topics
   # GET /topics.json
@@ -61,6 +62,12 @@ class TopicsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to topics_url, notice: 'Topic was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def require_permission
+    if current_user != Topic.find(params[:id]).user
+      redirect_to root_path
     end
   end
 

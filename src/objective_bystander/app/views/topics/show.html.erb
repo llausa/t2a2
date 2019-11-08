@@ -19,15 +19,34 @@
   <%= @topic.desc %>
 </p>
 
+
 <div>
-  <% if @topic %>
+  <% unless @questions.empty? %>
     <% @questions.each do |question| %>
-      <p><%= '-' + question.title %></p>
+      <p>
+        <%= "#{question.title} | by #{User.find(question.user_id).username}" %> |
+        <%= link_to "See Advice", advice_question_path(question.id) %>
+      </p>
+        <% if @topic.user_id == current_user.id  %>
+          <p><%= link_to "Answer", advice_question_path(question.id) %></p>
+        <% elsif @topic.title == "General"%>
+          <p><%= link_to "Answer", advice_question_path(question.id) %></p>
+        <% elsif @topic.title == "Health"%>
+          <p><%= link_to "Answer", advice_question_path(question.id) %></p>
+        <% elsif @topic.title == "Wealth"%>
+          <p><%= link_to "Answer", advice_question_path(question.id) %></p>
+        <% elsif @topic.title == "Relationships"%>
+          <p><%= link_to "Answer", advice_question_path(question.id) %></p>
+        <% end %>
     <% end %>
   <% else %>
-    <%= 'bruh1' %>
+    <p>No Questions yet...</p>
   <% end %>
 </div>
 
-<%= link_to 'Edit', edit_topic_path(@topic) %> |
-<%= link_to 'Back', topics_path %>
+<% if current_user.id == @topic.user_id %>
+  <%= link_to 'Edit', edit_topic_path(@topic) %> |
+  <%= link_to 'Destroy', @topic, method: :delete, data: { confirm: 'Are you sure?' } %> |
+<% end %>
+
+<%= link_to 'Back', :back %>
