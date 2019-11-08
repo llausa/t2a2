@@ -1,6 +1,7 @@
 class AdviceQuestionsController < ApplicationController
   before_action :set_advice_question, only: [:show, :edit, :update, :destroy]
   before_action :require_permission, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index]
 
   # GET /advice_questions
   # GET /advice_questions.json
