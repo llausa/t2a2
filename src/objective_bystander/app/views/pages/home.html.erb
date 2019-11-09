@@ -53,7 +53,7 @@
   <div class="columns has-text-centered">
     <div class="column">
       <h1 class='title'>
-        <%= link_to "#{@general_topic.title}", topic_path(@general_topic) %>
+        <%= "#{@general_topic.title}" %>
       </h1>
       <% if AdviceQuestion.where(topic_id: @general_topic.id).count > 0 %>
         <% AdviceQuestion.where(topic_id: @general_topic.id)[0..2].each do |q| %>
@@ -66,10 +66,12 @@
           <%= 'Nothing here yet...' %>
         </p>
       <% end %>
+      <br>
+      <%= link_to "See more", topic_path(@general_topic), class: 'button is-light' %>
     </div>
     <div class="column">
       <h1 class='title'>
-        <%= link_to "#{@health_topic.title}", topic_path(@health_topic) %>
+        <%= "#{@health_topic.title}" %>
       </h1>
       <% if AdviceQuestion.where(topic_id: @health_topic.id).count > 0 %>
         <% AdviceQuestion.where(topic_id: @health_topic.id)[0..2].each do |q| %>
@@ -82,13 +84,15 @@
           <%= 'Nothing here yet...' %>
         </p>
       <% end %>
+      <br>
+      <%= link_to "See more", topic_path(@health_topic), class: 'button is-light' %>
     </div>
   </div>
 
   <div class="columns has-text-centered">
     <div class="column">
       <h1 class='title'>
-        <%= link_to "#{@wealth_topic.title}", topic_path(@wealth_topic) %>
+        <%= "#{@wealth_topic.title}" %>
       </h1>
       <% if AdviceQuestion.where(topic_id: @wealth_topic.id).count > 0 %>
         <% AdviceQuestion.where(topic_id: @wealth_topic.id)[0..2].each do |q| %>
@@ -101,10 +105,12 @@
           <%= 'Nothing here yet...' %>
         </p>
       <% end %>
+      <br>
+      <%= link_to "See more", topic_path(@wealth_topic), class: 'button is-light' %>
     </div>
     <div class="column">
       <h1 class='title'>
-        <%= link_to "#{@relationships_topic.title}", topic_path(@relationships_topic) %>
+        <%= "#{@relationships_topic.title}" %>
       </h1>
       <% if AdviceQuestion.where(topic_id: @relationships_topic.id).count > 0 %>
         <% AdviceQuestion.where(topic_id: @relationships_topic.id)[0..2].each do |q| %>
@@ -117,51 +123,52 @@
           <%= 'Nothing here yet...' %>
         </p>
       <% end %>
+      <br>
+      <%= link_to "See more", topic_path(@relationships_topic), class: 'button is-light' %>
     </div>
   </div>
 </section>
 
 <% if @advisor_topics %>
+  <hr>
   <section class="section">
     <h1 class="title has-text-centered">Advisor Topics</h1>
 
     <div class="columns has-text-centered">
-      <div class="column">
-        bruh
-      </div>
-      <div class="column">
-        bruh
-      </div>
+      <div class="column is-full">
+        <% @advisor_topics[3..-1].each do |topic| %>
 
-      <div class="column">
-          bruh
+          <h1 class='title'>
+            <%= "#{topic.title}" %>
+          </h1>
+          <% if AdviceQuestion.where(topic_id: topic.id).count > 0 %>
+            <% AdviceQuestion.where(topic_id: topic.id).each do |q| %>
+              <p>
+                <%= link_to "#{q.title}", advice_question_path(q) %>
+              </p>
+            <% end %>
+            <br>
+            <%= link_to "See more", topic_path(topic), class: 'button is-light' %>
+            <br>
+          <% else %>
+            <%= 'No advice requests on this topic yet...' %>
+          <% end %>
+        <% end %>
       </div>
-    </div>
-
-    <div class="columns has-text-centered">
-      <div class="column">
-        bruh
-      </div>
-      <div class="column">
-        bruh
-      </div>
-    </div>
   </section>
 <% end %>
 
-<hr>
-<% if @advisor_topics %>
-  <% @advisor_topics[3..-1].each do |topic| %>
-    <div>
-      <p><%= link_to "#{topic.title} | #{topic.desc}", topic_path(topic) %></p>
-      <% if AdviceQuestion.where(topic_id: topic.id) %>
-        <% AdviceQuestion.where(topic_id: topic.id).each do |q| %>
-          <p><%= '-' + q.title %></p>
-        <% end %>
-      <% else %>
-        <%= 'bruh1' %>
-      <% end %>
-    </div>
-  </div>
-  <% end %>
-<% end %>
+<%# if @advisor_topics %>
+  <%# @advisor_topics[3..-1].each do |topic| %>
+    <%# <div> %>
+      <%#  link_to "#{topic.title} | #{topic.desc}", topic_path(topic) %>
+      <%# if AdviceQuestion.where(topic_id: topic.id) %>
+        <%# AdviceQuestion.where(topic_id: topic.id).each do |q| %>
+          <%#  '-' + q.title %>
+        <%# end %>
+      <%# else %>
+        <%#  'bruh1' %>
+      <%# end %>
+    <%# </div> %>
+  <%# end %>
+<%# end %>
