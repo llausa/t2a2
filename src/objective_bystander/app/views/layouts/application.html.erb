@@ -12,9 +12,66 @@
   </head>
 
   <body>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="/">
+          <h1><strong>ObjectiveBystander</strong></h1>
+        </a>
+
+        <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <div id="navMenu" class="navbar-menu">
+        <div class="navbar-start">
+        </div>
+
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              <% if user_signed_in? %>
+                <%= link_to 'User Profile', user_profile_path, class: 'button is-primary' %>
+                <%= link_to 'Logout', destroy_user_session_path, class: 'button is-light', method: :delete %>
+              <% else %>
+                <%= link_to 'Login', new_user_session_path, class: 'button is-light' %>
+                <%= link_to 'Sign up', new_user_registration_path, class: 'button is-danger' %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', () => {
+          // Get all "navbar-burger" elements
+          const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+          // const $nivbarMenu = Array.prototype.slice.call(document.querySelectorAll('.navbar-menu'), 0);
+          // Check if there are any navbar burgers
+          if ($navbarBurgers.length > 0) {
+
+            // Add a click event on each of them
+            $navbarBurgers.forEach( el => {
+              el.addEventListener('click', () => {
+
+                // Get the target from the "data-target" attribute
+                const target = el.dataset.target;
+                const $target = document.getElementById(target);
+
+                // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+                el.classList.toggle('is-active');
+                $target.classList.toggle('is-active');
+              });
+            });
+          }
+        });
+      </script>
+    </nav>
+
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <p><%= link_to "Home", root_path %></p>
+
     <%= yield %>
   </body>
 </html>
