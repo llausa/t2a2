@@ -147,28 +147,14 @@
                 <%= link_to "#{q.title}", advice_question_path(q) %>
               </p>
             <% end %>
-            <br>
-            <%= link_to "See more", topic_path(topic), class: 'button is-light' %>
-            <br>
           <% else %>
             <%= 'No advice requests on this topic yet...' %>
           <% end %>
+          <br>
+          <%= link_to "See more", topic_path(topic), class: 'button is-light' %>
+          <br>
         <% end %>
+        <br>
       </div>
   </section>
 <% end %>
-
-<%# if @advisor_topics %>
-  <%# @advisor_topics[3..-1].each do |topic| %>
-    <%# <div> %>
-      <%#  link_to "#{topic.title} | #{topic.desc}", topic_path(topic) %>
-      <%# if AdviceQuestion.where(topic_id: topic.id) %>
-        <%# AdviceQuestion.where(topic_id: topic.id).each do |q| %>
-          <%#  '-' + q.title %>
-        <%# end %>
-      <%# else %>
-        <%#  'bruh1' %>
-      <%# end %>
-    <%# </div> %>
-  <%# end %>
-<%# end %>

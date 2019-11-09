@@ -1,58 +1,95 @@
-<h1>User Profile</h1>
+<section class="hero is-info has-text-centered">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        User Profile
+      </h1>
+      <h2 class="subtitle">
+        Welcome back <%= current_user.username %>!
+      </h2>
+    </div>
+  </div>
+</section>
 
-<p>Your Usernam: <%= current_user.username %></p>
-<p>Your Email: <%= current_user.email %></p>
-<%# link_to  %>
-<%= link_to "Edit your profile", edit_user_registration_path %>
+<section class="section has-text-centered">
+  <div class="container">
+    <h1 class="title">Here is your information:</h1>
+    <p>Your Username: <%= current_user.username %></p>
+    <p>Your Email: <%= current_user.email %></p>
+    <p>Your Role: <%= current_user.roles.first.name %></p>
+    <br>
+    <%= link_to "Edit your profile", edit_user_registration_path, class: 'button is-light' %>
+  </div>
+</section>
 
 <% if @topics %>
   <% unless @topics.empty? %>
-    <h3>Your Topics:</h3>
-    <% @topics.each do |topic| %>
-    <div>
-      <p><%= topic.title %></p>
-      <p><%= topic.desc.truncate(60) %></p>
-      <% if AdviceQuestion.where(topic_id: topic.id) %>
-        <% AdviceQuestion.where(topic_id: topic.id).each do |question| %>
-          <p><%= "- #{question.title} | by #{User.find(question.user_id).username}" %></p>
+    <section class="section has-text-centered">
+      <div class="container">
+        <h1 class="title">Your Topics:</h1>
+        <% @topics.each do |topic| %>
+        <div>
+          <h1><strong><%= topic.title %></strong></h1>
+          <%= topic.desc.truncate(60) %>
+          <br>
+          <% if AdviceQuestion.where(topic_id: topic.id) %>
+            <% AdviceQuestion.where(topic_id: topic.id).each do |question| %>
+              <h2>➡️ <%= link_to "#{question.title}", advice_question_path(question) %></h2>
+            <% end %>
+            <br>
+          <% end %>
+          <%= link_to 'See more', topic_path(topic), class: 'button is-light' %>
+        </div>
         <% end %>
-      <% end %>
-      <%= link_to 'See more', topic_path(topic) %>
-    </div>
-    <% end %>
+
+      </div>
+    </section>
   <% end %>
-  <p><%= link_to 'Create Topic', new_topic_path %></p>
+  <div class="container is-fullhd">
+    <div class="has-text-centered">
+      <%= link_to 'Create Topic', new_topic_path, class: 'button is-danger' %>
+    </div>
+  </div>
 <% end %>
 
 
 <% if @replies %>
   <% unless @replies.empty? %>
-    <h3>Your Replies:</h3>
-    <% @replies.each do |reply| %>
-    <div>
-      <p><%= reply.title %></p>
-      <p><%= reply.desc.truncate(60) %></p>
-      <%= link_to 'See more', advice_reply_path(reply) %>
-    </div>
-    <% end %>
+    <section class="section has-text-centered">
+      <div class='container'>
+        <h3 class='title'>Your Replies:</h3>
+        <% @replies.each do |reply| %>
+          <br>
+          <div>
+            <strong><%= reply.title %></strong>
+            <p><%= reply.desc.truncate(60) %></p>
+            <%= link_to 'See more', advice_reply_path(reply), class: 'button is-light' %>
+          </div>
+        <% end %>
+      </div>
+    </section>
   <% end %>
 <% end %>
 
 <% if @questions %>
   <% unless @questions.empty? %>
-    <h3>Your Questions:</h3>
-    <% @questions.each do |question| %>
-    <div>
-      <p><%= question.title %></p>
-      <p><%= question.desc.truncate(60) %></p>
-      <% if AdviceReply.where(advice_question_id: question.id) %>
-        <% AdviceReply.where(advice_question_id: question.id).each do |reply| %>
-          <p><%= "- #{reply.title} by #{User.find(reply.user_id).username}" %></p>
-        <% end %>
-      <% end %>
-      <%= link_to 'See more', advice_question_path(question) %>
-    </div>
-    <% end %>
+    <section class="section has-text-centered">
+      <div class='container'>
+        <h3 class='title'>Your Questions:</h3>
+          <% @questions.each do |question| %>
+          <br>
+          <div>
+            <h2>➡️<strong><%= question.title %></strong></h2>
+            <p><%= question.desc.truncate(60) %></p>
+            <% if AdviceReply.where(advice_question_id: question.id) %>
+              <% AdviceReply.where(advice_question_id: question.id).each do |reply| %>
+                <p><%= "- #{reply.title} by #{User.find(reply.user_id).username}" %></p>
+              <% end %>
+            <% end %>
+            <%= link_to 'See more', advice_question_path(question), class: 'button is-light' %>
+          </div>
+          <% end %>
+      </div>
+    </section>
   <% end %>
-  <p><%= link_to 'Create Advice Question', new_advice_question_path %></p>
 <% end %>
