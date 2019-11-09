@@ -1,6 +1,19 @@
-<h1>Editing Advice Reply</h1>
+<section class="hero is-info has-text-centered">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Editing Advice Reply
+      </h1>
+    </div>
+  </div>
+</section>
 
-<%= render 'form', advice_reply: @advice_reply %>
+<section class="section">
+  <div class="container has-text-centered">
 
-<%= link_to 'Show', @advice_reply %> |
-<%= link_to 'Back', :back %>
+    <%= render 'form', advice_reply: @advice_reply %>
+
+    <%= link_to 'Show', @advice_reply %> |
+    <%= link_to 'Back', :back, class: 'button is-danger' %>
+  </div>
+</section>

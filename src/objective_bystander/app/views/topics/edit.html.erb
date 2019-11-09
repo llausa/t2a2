@@ -1,6 +1,18 @@
-<h1>Editing Topic</h1>
+<section class="hero is-info has-text-centered">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Editing Topic
+      </h1>
+    </div>
+  </div>
+</section>
 
-<%= render 'form', topic: @topic %>
+<section class="section">
+  <div class="container has-text-centered">
+    <%= render 'form', topic: @topic %>
 
-<%= link_to 'Show', @topic %> |
-<%= link_to 'Back', :back %>
+    <%= link_to 'Show', @topic %> |
+    <%= link_to 'Back', :back, class: 'button is-danger' %>
+  </div>
+</section>
