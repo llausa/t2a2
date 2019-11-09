@@ -1,55 +1,71 @@
-<p id="notice"><%= notice %></p>
+<section class="hero is-info has-text-centered">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Topic
+      </h1>
+    </div>
+  </div>
+</section>
 
-<p>
-  <strong>Title:</strong>
-  <%= @topic.title %>
-</p>
+<section class="section">
+  <div class="container has-text-centered">
+    <p class='title'>
+      <%= @topic.title %>
+    </p>
 
-<p>
-  <%= "created by #{User.find(@topic.user_id).username}" %>
-</p>
+    <p class='subtitle'>
+      <%= @topic.desc %><br>
+      <%= "Created by #{User.find(@topic.user_id).username}" %>
+    </p>
 
-<p>
-  <strong>Desc:</strong>
-  <%= @topic.desc %>
-</p>
-
-<% if @advice_question %>
-  <% if @topic.title == "General" %>
-    <h2>Add Question</h2>
-    <%= render 'advice_questions/form', advice_question: @advice_question %>
-  <% elsif @topic.title == "Health" %>
-    <h2>Add Question</h2>
-    <%= render 'advice_questions/form', advice_question: @advice_question %>
-  <% elsif @topic.title == "Wealth" %>
-    <h2>Add Question</h2>
-    <%= render 'advice_questions/form', advice_question: @advice_question %>
-  <% elsif @topic.title == "Relationships" %>
-    <h2>Add Question</h2>
-    <%= render 'advice_questions/form', advice_question: @advice_question %>
-  <% else %> <%# @topic.user_id == current_user.id %>
-    <h2>Add Question</h2>
-    <%= render 'advice_questions/form', advice_question: @advice_question %>
-  <% end %>
-<% end %>
-
-<div>
-  <% unless @questions.empty? %>
-    <h3>Advice Questions for this Topic</h3>
-    <% @questions.each do |question| %>
-      <p>
-        <%= "#{question.title} | by #{User.find(question.user_id).username}" %> |
-        <%= link_to "See Replies", advice_question_path(question.id) %>
-      </p>
+    <br>
+    <% if @advice_question %>
+      <% if @topic.title == "General" %>
+        <h2 class='title'>You should add a Question!</h2>
+        <%= render 'advice_questions/form', advice_question: @advice_question %>
+      <% elsif @topic.title == "Health" %>
+        <h2 class='title'>You should add a Question!</h2>
+        <%= render 'advice_questions/form', advice_question: @advice_question %>
+      <% elsif @topic.title == "Wealth" %>
+        <h2 class='title'>You should add a Question!</h2>
+        <%= render 'advice_questions/form', advice_question: @advice_question %>
+      <% elsif @topic.title == "Relationships" %>
+        <h2 class='title'>You should add a Question!</h2>
+        <%= render 'advice_questions/form', advice_question: @advice_question %>
+      <% else %> <%# @topic.user_id == current_user.id %>
+        <h2 class='title'>You should add a Question!</h2>
+        <%= render 'advice_questions/form', advice_question: @advice_question %>
+      <% end %>
     <% end %>
-  <% else %>
-    <p>No Questions yet...</p>
-  <% end %>
-</div>
 
-<% if current_user.id == @topic.user_id %>
-  <%= link_to 'Edit', edit_topic_path(@topic) %> |
-  <%= link_to 'Destroy', @topic, method: :delete, data: { confirm: 'Are you sure?' } %> |
-<% end %>
+    <% if current_user.id == @topic.user_id %>
+      <%= link_to 'Edit', edit_topic_path(@topic) %> |
+      <%= link_to 'Destroy', @topic, method: :delete, data: { confirm: 'Are you sure?' } %> |
+    <% end %>
+  </div>
+</section>
 
-<%= link_to 'Back', :back %>
+<hr>
+
+<section class="section">
+  <div class="container has-text-centered">
+    <div>
+      <% unless @questions.empty? %>
+        <h3 class='title'>Advice Questions for this Topic</h3>
+        <br>
+        <% @questions.each do |question| %>
+          <p class='subtitle'>
+            <%= "#{question.title} | by #{User.find(question.user_id).username}" %> |
+            <%= link_to "See More", advice_question_path(question.id) %>
+          </p>
+        <% end %>
+      <% else %>
+        <p>No Questions yet...</p>
+      <% end %>
+    </div>
+    <br>
+    <hr>
+    <%= link_to 'Back', :back, class: 'button is-danger' %>
+  </div>
+</section>

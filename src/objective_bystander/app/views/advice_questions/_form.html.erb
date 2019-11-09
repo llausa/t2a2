@@ -25,17 +25,17 @@
   <%= hidden_field_tag :topic_id, @topic_id %>
 
   <div class="field">
-    <%= form.label :title %>
+    <%= form.label :title, 'Topic Title:' %>
     <%= form.text_area :title %>
   </div>
 
   <div class="field">
-    <%= form.label :desc %>
+    <%= form.label :desc, 'Topic Description:' %>
     <%= form.text_area :desc %>
   </div>
 
   <p>
-    <%= form.label :img %>
+    <%= form.label :img, 'Upload a Question Image:' %>
     <%= form.file_field :img %>
   </p>
 

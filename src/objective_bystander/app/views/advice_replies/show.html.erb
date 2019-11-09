@@ -1,26 +1,41 @@
-<p id="notice"><%= notice %></p>
-<p>
-  <strong>Title:</strong>
-  <%= @advice_reply.title %>
-</p>
+<section class="hero is-info has-text-centered">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Advice Reply
+      </h1>
+    </div>
+  </div>
+</section>
 
-<p>
-  <strong>User:</strong>
-  <%= @advice_reply.user.username %>
-</p>
+<section class="section">
+  <div class="container has-text-centered">
+    <p>
+      <strong>Original question:</strong>
+      <%= @advice_reply.advice_question.title %>
+    </p>
+    <br>
+    <strong>Reply title:</strong>
+    <h1 class='title'>
+      <%= @advice_reply.title %>
+    </h1>
+    <p class='subtitle'>
+      <strong>Written by user:</strong>
+      <%= @advice_reply.user.username %>
+    </p>
 
-<p>
-  <strong>Advice question:</strong>
-  <%= @advice_reply.advice_question.title %>
-</p>
+    <p class='subtitle'>
+      <%= @advice_reply.desc %>
+    </p>
+    <br>
 
-<p>
-  <strong>Desc:</strong>
-  <%= @advice_reply.desc %>
-</p>
 
-<% if @advice_reply.user_id == current_user.id %>
-  <%= link_to 'Edit', edit_advice_reply_path(@advice_reply) %> |
-  <%= link_to 'Destroy', @advice_reply, method: :delete, data: { confirm: 'Are you sure?' } %>
-<% end %>
-<p><%= link_to 'Back', :back %></p>
+    <br>
+    <% if @advice_reply.user_id == current_user.id %>
+      <%= link_to 'Edit', edit_advice_reply_path(@advice_reply) %> |
+      <%= link_to 'Destroy', @advice_reply, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
+    <hr>
+    <p><%= link_to 'Back', :back, class: 'button is-danger' %></p>
+  </div>
+</section>

@@ -1,67 +1,94 @@
-<p id="notice"><%= notice %></p>
+<section class="hero is-info has-text-centered">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Advice Question
+      </h1>
+    </div>
+  </div>
+</section>
 
-<h1>Question</h1>
+<section class="section">
+  <div class="container has-text-centered">
+    <p class='subtitle'>
+      <strong>Topic: </strong><%= @advice_question.topic.title %>
+    </p>
 
-<p>
-  <strong>Title:</strong><%= @advice_question.title %>
-</p>
+    <h1 class='title'>Question</h1>
 
-<p>
-  <strong>Created by:</strong> <%= @advice_question.user.username %>
-</p>
-<p>
-  <strong>Topic: </strong><%= @advice_question.topic.title %>
-</p>
+    <p class='subtitle'>
+      <%= @advice_question.title %>
+    </p>
 
-<p>
-  <strong>Desc:</strong>
-  <%= @advice_question.desc %>
-</p>
+    <p class='subtitle'>
+      <%= @advice_question.desc %>
+    </p>
 
-<% if @advice_question.img.attached? %>
-  <p class="book-item">
-    <%= image_tag @advice_question.img, width: 200 %>
-  </p>
-<% end %>
+    <% if @advice_question.img.attached? %>
+      <p class="book-item">
+        <figure class="image">
+          <%= image_tag @advice_question.img, size: '100x100' %>
+        </figure>
+      </p>
+    <% end %>
 
-<% if @advice_reply %>
-  <% if Topic.find(@advice_question.topic_id).title == "General" %>
-    <h2>Answer</h2>
-    <%= render 'advice_replies/form', advice_reply: @advice_reply %>
-  <% elsif Topic.find(@advice_question.topic_id).title == "Health" %>
-    <h2>Answer</h2>
-    <%= render 'advice_replies/form', advice_reply: @advice_reply %>
-  <% elsif Topic.find(@advice_question.topic_id).title == "Wealth" %>
-    <h2>Answer</h2>
-    <%= render 'advice_replies/form', advice_reply: @advice_reply %>
-  <% elsif Topic.find(@advice_question.topic_id).title == "Relationships" %>
-    <h2>Answer</h2>
-    <%= render 'advice_replies/form', advice_reply: @advice_reply %>
-  <% elsif Topic.find(@advice_question.topic_id).user_id == current_user.id %>
-    <h2>Answer</h2>
-    <%= render 'advice_replies/form', advice_reply: @advice_reply %>
-  <% end %>
-<% end %>
+    <p>
+      <strong>Created by:</strong> <%= @advice_question.user.username %>
+    </p>
 
-<div>
-  <% unless @replies.empty? %>
-    <% unless @replies.empty? %>
-      <h3>Replies:</h3>
-      <% @replies.each do |reply| %>
-      <div>
-        <p><%= reply.title %></p>
-        <p><%= reply.desc %> | <%= link_to "See More", advice_reply_path(reply.id) %></p>
-      </div>
+    <br>
+    <% if @advice_reply %>
+      <% if Topic.find(@advice_question.topic_id).title == "General" %>
+        <h2 class='title'>You should answer this question!</h2>
+        <%= render 'advice_replies/form', advice_reply: @advice_reply %>
+      <% elsif Topic.find(@advice_question.topic_id).title == "Health" %>
+        <h2 class='title'>You should answer this question!</h2>
+        <%= render 'advice_replies/form', advice_reply: @advice_reply %>
+      <% elsif Topic.find(@advice_question.topic_id).title == "Wealth" %>
+        <h2 class='title'>You should answer this question!</h2>
+        <%= render 'advice_replies/form', advice_reply: @advice_reply %>
+      <% elsif Topic.find(@advice_question.topic_id).title == "Relationships" %>
+        <h2 class='title'>You should answer this question!</h2>
+        <%= render 'advice_replies/form', advice_reply: @advice_reply %>
+      <% elsif Topic.find(@advice_question.topic_id).user_id == current_user.id %>
+        <h2 class='title'>You should answer this question!</h2>
+        <%= render 'advice_replies/form', advice_reply: @advice_reply %>
       <% end %>
     <% end %>
-  <% else %>
-    <%= 'No replies yet...' %>
-  <% end %>
-</div>
 
-<% if @advice_question.user_id == current_user.id %>
-  <%= link_to 'Edit', edit_advice_question_path(@advice_question) %> |
-  <%= link_to 'Destroy', @advice_question, method: :delete, data: { confirm: 'Are you sure?' } %>
-<% end %>
+    <% if @advice_question.user_id == current_user.id %>
+      <%= link_to 'Edit', edit_advice_question_path(@advice_question) %> |
+      <%= link_to 'Destroy', @advice_question, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% end %>
+  </div>
+</section>
 
-<p><%= link_to 'Back', :back %></p>
+<hr>
+
+<section class="section">
+  <div class="container has-text-centered">
+    <div>
+      <% unless @replies.empty? %>
+        <% unless @replies.empty? %>
+          <h3 class='title'>Replies:</h3>
+          <% @replies.each do |reply| %>
+          <div>
+            <p class='title'><%= reply.title %></p>
+            <p class='subtitle'><%= reply.desc %></p>
+            <p>by <%= User.find(reply.user_id).username %></p>
+            <br>
+            <%= link_to "See More", advice_reply_path(reply.id), class: 'button is-light' %>
+          </div>
+          <% end %>
+        <% end %>
+      <% else %>
+        <%= 'No replies yet...' %>
+      <% end %>
+    </div>
+
+
+    <br>
+    <hr>
+    <p><%= link_to 'Back', :back, class: 'button is-danger' %></p>
+  </div>
+</section>

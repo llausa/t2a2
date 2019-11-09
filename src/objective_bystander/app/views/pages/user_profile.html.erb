@@ -91,5 +91,13 @@
           <% end %>
       </div>
     </section>
+  <% else %>
+    <section class="section has-text-centered">
+      <div class='container'>
+        <p>You can ask questions from inside topics you are interested in!</p>
+        <br>
+        <%= link_to 'See Topics', root_path, class: 'button is-light' %>
+      </div>
+    </section>
   <% end %>
 <% end %>
