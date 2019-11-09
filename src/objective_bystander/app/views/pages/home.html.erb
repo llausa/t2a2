@@ -45,57 +45,109 @@
   </section>
 <% end %>
 
-<div>
-  <%= link_to "#{@general_topic.title} | #{@general_topic.desc}", topic_path(@general_topic) %>
-  <% if AdviceQuestion.where(topic_id: @general_topic.id) %>
-    <% AdviceQuestion.where(topic_id: @general_topic.id)[0..2].each do |q| %>
-      <p><%= q.title %></p>
-    <% end %>
-  <% else %>
-    <%= 'bruh1' %>
-  <% end %>
-</div>
+<section class="section">
+  <h1 class="title has-text-centered">Advice Questions</h1>
+  <h2 class="subtitle has-text-centered">
+    broken down by topic
+  </h2>
+  <div class="columns has-text-centered">
+    <div class="column">
+      <h1 class='title'>
+        <%= link_to "#{@general_topic.title}", topic_path(@general_topic) %>
+      </h1>
+      <% if AdviceQuestion.where(topic_id: @general_topic.id).count > 0 %>
+        <% AdviceQuestion.where(topic_id: @general_topic.id)[0..2].each do |q| %>
+        <p>
+          <%= link_to "#{q.title}", advice_question_path(q.id) %>
+        </p>
+        <% end %>
+      <% else %>
+        <p>
+          <%= 'Nothing here yet...' %>
+        </p>
+      <% end %>
+    </div>
+    <div class="column">
+      <h1 class='title'>
+        <%= link_to "#{@health_topic.title}", topic_path(@health_topic) %>
+      </h1>
+      <% if AdviceQuestion.where(topic_id: @health_topic.id).count > 0 %>
+        <% AdviceQuestion.where(topic_id: @health_topic.id)[0..2].each do |q| %>
+        <p>
+          <%= link_to "#{q.title}", advice_question_path(q.id) %>
+        </p>
+        <% end %>
+      <% else %>
+        <p>
+          <%= 'Nothing here yet...' %>
+        </p>
+      <% end %>
+    </div>
+  </div>
 
-<br>
+  <div class="columns has-text-centered">
+    <div class="column">
+      <h1 class='title'>
+        <%= link_to "#{@wealth_topic.title}", topic_path(@wealth_topic) %>
+      </h1>
+      <% if AdviceQuestion.where(topic_id: @wealth_topic.id).count > 0 %>
+        <% AdviceQuestion.where(topic_id: @wealth_topic.id)[0..2].each do |q| %>
+        <p>
+          <%= link_to "#{q.title}", advice_question_path(q.id) %>
+        </p>
+        <% end %>
+      <% else %>
+        <p>
+          <%= 'Nothing here yet...' %>
+        </p>
+      <% end %>
+    </div>
+    <div class="column">
+      <h1 class='title'>
+        <%= link_to "#{@relationships_topic.title}", topic_path(@relationships_topic) %>
+      </h1>
+      <% if AdviceQuestion.where(topic_id: @relationships_topic.id).count > 0 %>
+        <% AdviceQuestion.where(topic_id: @relationships_topic.id)[0..2].each do |q| %>
+        <p>
+          <%= link_to "#{q.title}", advice_question_path(q.id) %>
+        </p>
+        <% end %>
+      <% else %>
+        <p>
+          <%= 'Nothing here yet...' %>
+        </p>
+      <% end %>
+    </div>
+  </div>
+</section>
 
-<div>
-  <%= link_to "#{@health_topic.title} | #{@health_topic.desc}", topic_path(@health_topic) %>
-  <% if AdviceQuestion.where(topic_id: @health_topic.id) %>
-    <% AdviceQuestion.where(topic_id: @health_topic.id).each do |q| %>
-      <p><%= q.title %></p>
-    <% end %>
-  <% else %>
-    <%= 'bruh1' %>
-  <% end %>
-</div>
+<% if @advisor_topics %>
+  <section class="section">
+    <h1 class="title has-text-centered">Advisor Topics</h1>
 
-<br>
+    <div class="columns has-text-centered">
+      <div class="column">
+        bruh
+      </div>
+      <div class="column">
+        bruh
+      </div>
 
-<div>
-  <%= link_to "#{@wealth_topic.title} | #{@wealth_topic.desc}", topic_path(@wealth_topic) %>
-  <% if AdviceQuestion.where(topic_id: @wealth_topic.id) %>
-    <% AdviceQuestion.where(topic_id: @wealth_topic.id).each do |q| %>
-      <p><%= q.title %></p>
-    <% end %>
-  <% else %>
-    <%= 'bruh1' %>
-  <% end %>
-</div>
+      <div class="column">
+          bruh
+      </div>
+    </div>
 
-<br>
-
-<div>
-  <%= link_to "#{@relationships_topic.title} | #{@relationships_topic.desc}", topic_path(@relationships_topic) %>
-  <% if AdviceQuestion.where(topic_id: @relationships_topic.id) %>
-    <% AdviceQuestion.where(topic_id: @relationships_topic.id).each do |q| %>
-      <p><%= q.title %></p>
-    <% end %>
-  <% else %>
-    <%= 'bruh1' %>
-  <% end %>
-</div>
-
-<br>
+    <div class="columns has-text-centered">
+      <div class="column">
+        bruh
+      </div>
+      <div class="column">
+        bruh
+      </div>
+    </div>
+  </section>
+<% end %>
 
 <hr>
 <% if @advisor_topics %>
