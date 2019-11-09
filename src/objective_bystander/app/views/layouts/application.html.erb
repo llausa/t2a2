@@ -33,11 +33,11 @@
           <div class="navbar-item">
             <div class="buttons">
               <% if user_signed_in? %>
-                <%= link_to 'User Profile', user_profile_path, class: 'button is-primary' %>
+                <%= link_to 'User Profile', user_profile_path, class: 'button is-danger' %>
                 <%= link_to 'Logout', destroy_user_session_path, class: 'button is-light', method: :delete %>
               <% else %>
-                <%= link_to 'Login', new_user_session_path, class: 'button is-light' %>
                 <%= link_to 'Sign up', new_user_registration_path, class: 'button is-danger' %>
+                <%= link_to 'Login', new_user_session_path, class: 'button is-light' %>
               <% end %>
             </div>
           </div>
@@ -69,8 +69,9 @@
       </script>
     </nav>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+
+    <p class="notice has-text-centered"><%= notice %></p>
+    <p class="alert has-text-centered"><%= alert %></p>
 
     <%= yield %>
   </body>
