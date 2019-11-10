@@ -92,7 +92,7 @@ As a marketplace application, Users (advice givers aka advisors and advice taker
 
 An advice taker (aka requesting advice or advisee) can post a request for Advice on any of the advice topics like Health, Wealth, Relationships, General or an Advisor-created topic curated and answered by the advisor who owns that topic.
 
-An Advisor will be able to list out up to 3 topics they have and which advice takers can request advice for.
+An Advisor will be able to list out up to 4 topics they have and which advice takers can request advice for.
 
 A User, when creating an account will have to choose to be either an Advisor or an Advisee. These options are mutually exclusive. User usernames will be automaically randomly generated when an account is made and users will use their emails for authentication.
 
@@ -119,9 +119,9 @@ The User model is the primary model in the application. It holds relationships w
 
 Roles in this app have been created with Rolify, which means they don't have an actual Model but are attached to the Users model through a User Roles table on the database.
 
-A User will have either an _Advisor_ or _Advisee_ role and these will be mutually exclusive. The User model has a one-to-many relationship with the Topic model - meaning that one User object can have many Topics, but this will be capped at 3 specialties.
+A User will have either an _Advisor_ or _Advisee_ role and these will be mutually exclusive. The User model has a one-to-many relationship with the Topic model - meaning that one User object can have many Topics, but this will be capped at 4 topics.
 
-The Topic model is the schema for the 3 subjects or topics that an Advisor can create and which Advice Takers (aka Advisees) can request advice on specifically (by asking Advice Questions on the topic). Only the topic (a topic will be unique) owner will be able to answer any advice questions in the topic. The Topic model also belongs to the User model.
+The Topic model is the schema for the 4 subjects or topics that an Advisor can create and which Advice Takers (aka Advisees) can request advice on specifically (by asking Advice Questions on the topic). Only the topic (a topic will be unique) owner will be able to answer any advice questions in the topic. The Topic model also belongs to the User model.
 
 The User model can have many instances of Advice Questions and many instances of the Advice Replies model. Advice Questions also belong to the Topic model (aka to a Topic object).
 

@@ -7,7 +7,7 @@ class Topic < ApplicationRecord
   validate :topic_count_within_limit, on: :create
 
   def topic_count_within_limit
-    if self.user.topics.count >= 3
+    if self.user.topics.count >= 4
       errors.add(:base, "You've hit maximum number of topics per User")
     end
   end
