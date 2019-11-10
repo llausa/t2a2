@@ -46,9 +46,9 @@ R11 Description of your marketplace  _app_  (website), including:
 
 
 - Target audience
-	The primary target audience is anyone looking for specific, advice on Health, Wealth or Relationships based on the experience Advice Givers may have.
+	The primary target audience is anyone looking for advice on Health, Wealth, Relationships or in General as well as topics that are managed by subject matter experts.
 
-	The other primary target audience is advice givers who feel they can contribute with advice on specific topics under the Health, Wealth and Relationship umbrellas. The idea behind targeting these users is to unlock their experiences at scale and reachable by anyone with an Internet connection.
+	The other primary target audience is advice givers (Advisors) who feel they can contribute with advice on specific topics either under the Health, Wealth, Relationship and General umbrellas or specific topics they specialize in. The idea behind targeting these users is to unlock their experiences at scale and reachable by anyone with an Internet connection.
 
 - Tech stack (e.g. html, css, deployment platform, etc)
 	[Ruby on Rails](https://rubyonrails.org/) for Backend
@@ -65,31 +65,42 @@ User Stories can be found [here](https://github.com/llausa/t2a2/projects/1).
 
 ## Wireframes
 R13 Wireframes for your  _app_
+- [Home page 1 wireframe](docs/desktop_main1.png)
+
+- [Home page 2 wireframe](docs/desktop_main2.png)
+
+- [User profile wireframe](docs/User_Profile_Desktop.png)
+
+- [Topic show with questions](docs/topic_with_questions_Desktop.png)
+
 
 ## ERD
 R14 An ERD for your  _app_
 
-![objective_bystander_erd](docs/Objective%20Bystander%20ERD.png)
+![objective_bystander_erd](docs/objective_bystander_erd.png)
 
 ## High-Level Components
 R15 Explain the different high-level components (abstractions) in your  _app_
 
-As a marketplace application, Users (advice givers and takers) interact with each other through Advice and its replies.
+As a marketplace application, Users (advice givers aka advisors and advice takers aka advisees) interact with each other through Topics, Advice Questions and Advice Replies.
 
-An advice taker (aka requesting advice) can post a request for Advice on one of the main advice pages (Health, Wealth, Relationships, General) or directly ask an Advisor (advice giver) for advice on one of the three specialties where they are subject matter experts.
+An advice taker (aka requesting advice or advisee) can post a request for Advice on any of the advice topics like Health, Wealth, Relationships, General or an Advisor-created topic curated and answered by the advisor who owns that topic.
 
-An Advisor will be able to list out up to 3 specialities they have and which advice takers can request advice for.
+An Advisor will be able to list out up to 3 topics they have and which advice takers can request advice for.
 
-A User, when creating an account will have to choose to be either an Advisor or an Advice Taker. These options are mutually exclusive. User usernames will be randomly generated automatically when an account is made and users will use their emails for authentication.
+A User, when creating an account will have to choose to be either an Advisor or an Advisee. These options are mutually exclusive. User usernames will be automaically randomly generated when an account is made and users will use their emails for authentication.
+
+User will have access to their User Profile, where they can edit their profile and see their topics, advice replies or advice questions (depending on their role).
 
 ## Third Party Services
 
 R16 Detail any third party services that your  _app_  will use
 
 - Devise
+	- Devise is one of the most popular authentication tools for the Ruby on Rails framework.
 - Rolify
 - Couldinary
-- Ask Matt about Authorisation (does authorisation mean rolify? can it be custom made?)
+
 
 ## Project Models
 R17 Describe your projects  _models_  in terms of the relationships (active record associations) they have with each other
