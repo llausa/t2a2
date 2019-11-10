@@ -87,9 +87,9 @@ topic_3 = Topic.create!(user_id: user1.id,
               title: 'Wealth',
               desc: 'This is where you can ask Wealth-related advice from the Advisors in this site')
 
-topic_4 = Topic.create!(user_id: user1.id,
-              title: 'Relationships',
-              desc: 'This is where you can ask Relationship-related advice from the Advisors in this site')
+# topic_4 = Topic.create!(user_id: user1.id,
+#               title: 'Relationships',
+#               desc: 'This is where you can ask Relationship-related advice from the Advisors in this site')
 
 topic_5 = Topic.create!(user_id: user_advisor_2.id,
               title: 'Want to learn how to code? I can help you figure out what to learn!',
@@ -178,7 +178,7 @@ advice_question_8 = AdviceQuestion.create!(
 
 advice_question_9 = AdviceQuestion.create!(
                       user_id: user_advisee_5.id,
-                      topic_id: topic_4.id,
+                      topic_id: topic_8.id,
                       title: 'Do distance relationships work? How can you make it work?',
                       desc: 'Phasellus felis elit, commodo eu ex vel, laoreet placerat neque.')
 

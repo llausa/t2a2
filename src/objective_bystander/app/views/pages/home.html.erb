@@ -105,24 +105,26 @@
       <br>
       <%= link_to "See more", topic_path(@wealth_topic), class: 'button is-light' %>
     </div>
-    <div class="column">
-      <h1 class='title'>
-        <%= "#{@relationships_topic.title}" %>
-      </h1>
-      <% if AdviceQuestion.where(topic_id: @relationships_topic.id).count > 0 %>
-        <% AdviceQuestion.where(topic_id: @relationships_topic.id)[0..2].each do |q| %>
-        <p>
-          <%= link_to "#{q.title}", advice_question_path(q.id) %>
-        </p>
+    <% if @relationships_topic %>
+      <div class="column">
+        <h1 class='title'>
+          <%= "#{@relationships_topic.title}" %>
+        </h1>
+        <% if AdviceQuestion.where(topic_id: @relationships_topic.id).count > 0 %>
+          <% AdviceQuestion.where(topic_id: @relationships_topic.id)[0..2].each do |q| %>
+          <p>
+            <%= link_to "#{q.title}", advice_question_path(q.id) %>
+          </p>
+          <% end %>
+        <% else %>
+          <p>
+            <%= 'Nothing here yet...' %>
+          </p>
         <% end %>
-      <% else %>
-        <p>
-          <%= 'Nothing here yet...' %>
-        </p>
-      <% end %>
-      <br>
-      <%= link_to "See more", topic_path(@relationships_topic), class: 'button is-light' %>
-    </div>
+        <br>
+        <%= link_to "See more", topic_path(@relationships_topic), class: 'button is-light' %>
+      </div>
+    <% end %>
   </div>
 </section>
 
