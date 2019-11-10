@@ -1,8 +1,11 @@
 # T2A2 - Marketplace Project
 
+## Status
+	Completed! Check out the links below to see the project live (objective bystander) or the code base (github)
+
 ## The Project can be found here:
-- [Github](https://github.com/llausa/T2A2-Marketplace)
-- Live Website
+- [Github](https://github.com/llausa/t2a2)
+- [Objective Bystander](https://fierce-mesa-66953.herokuapp.com/) - Live website
 
 # The Problem
 **R7 Identification of the  _problem_  you are trying to solve by building this particular marketplace  _app_.**
@@ -18,23 +21,28 @@ A lot of knowledgeable people in the world are not sharing their thoughts and pe
 
 It can now be stored on the Internet and shared with anyone who is asking.
 
-The extension of this product would be to allow advice givers to charge a monthly subscription for their advice (while the platform takes a small cut), with limits placed by the advice giver on how many questions/advice requests can be made by premium users of the specific advice giver.
+An extension of this product would be to allow advice givers to charge a monthly subscription for their advice (while the platform takes a small cut), with limits placed by the advice giver on how many questions/advice requests can be made by premium users of the specific advice giver.
 
 ## The Solution
 
 R11 Description of your marketplace  _app_  (website), including:
 - Purpose
-	- The purpose of this application is to provide a two-way marketplace that connects subject-matter experts offering advice on specific topics with individuals seeking advice on those topics or on general topics.
+	- The purpose of this application is to provide a two-way marketplace that connects subject-matter experts offering advice on specific topics with individuals seeking advice on those topics or on general topics (Health, Wealth, Relationships and General).
 
 - Functionality / features
-	- Users will be able to create accounts on the platform and choose to be Advice Giver or Advice Takers.
-	- Advice Takers will be able to ask topics from specific Advice Givers under 3 topics (Health, Wealth, Relationships) or post Advice requests on a General Advice page
-	- Advice Givers will be able to post under three topics they feel capable of giving advice (under the three main categories: Health, Wealth, Relationships)
+	- Users will be able to create accounts on the platform and choose to be Advice Givers (Advisors) or Advice Takers (Advisees).
+	- Advice Takers (Advisees) will be able to ask questions from specific topics (managed by subject matter experts) or post Advice requests on a one of the four general advice page topics (health, wealth, relationships, general)
+	- Advice Givers (Advisors) will be able to respond to questions under the four main topics as well as on topics they have created and feel like they can give advice on. Only the Advisor owners of each topic will be able to answer questions on their topics. Advisees can choose to post questions under these Advisor topics if they feel like the Advisor can help them.
 
 - Sitemap
-	- ![sitemap](docs/sitemap.png)
+	- ![sitemap](docs/objective_bystander_sitemap.png)
 
-- Screenshots
+- Screenshots of final version
+	- [Screenshot 1](docs/screenshot_1.png)
+	- [Screenshot 2](docs/screenshot_2.png)
+	- [Screenshot 3](docs/screenshot_3.png)
+	- [Screenshot 4](docs/screenshot_4.png)
+	- [Screenshot 5](docs/screenshot_5.png)
 
 
 - Target audience
