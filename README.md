@@ -65,13 +65,19 @@ User Stories can be found [here](https://github.com/llausa/t2a2/projects/1).
 
 ## Wireframes
 R13 Wireframes for your  _app_
-- [Home page 1 wireframe](docs/desktop_main1.png)
+- [Home page 1 desktop wireframe](docs/desktop_main1.png)
 
-- [Home page 2 wireframe](docs/desktop_main2.png)
+- [Home page 2 desktop wireframe](docs/desktop_main2.png)
 
-- [User profile wireframe](docs/User_Profile_Desktop.png)
+- [Home page mobile wireframe](docs/Home_Mobile.png)
 
-- [Topic show with questions](docs/topic_with_questions_Desktop.png)
+- [User profile desktop wireframe](docs/User_Profile_Desktop.png)
+
+- [User profile mobile wireframe](docs/User_Profile_Mobile.png)
+
+- [Topic show with questions desktop wireframe](docs/topic_with_questions_Desktop.png)
+
+- [Topic show with questions mobile wireframe](docs/Advice_Listing_Mobile.png)
 
 
 ## ERD
@@ -97,29 +103,61 @@ User will have access to their User Profile, where they can edit their profile a
 R16 Detail any third party services that your  _app_  will use
 
 - Devise
-	- Devise is one of the most popular authentication tools for the Ruby on Rails framework.
+	- Devise is one of the most popular authentication tools for the Ruby on Rails framework. It brings flexible and thorough out-of-the-box authentication functionality. This is taken advantage of in this project to allow modifications necessary to set roles in user creation, as well as random username generation.
 - Rolify
+	- Roles library gem for the Ruby on Rails framework that creates all of the functionality needed to assign roles to Users and create authorisation throughout the website. Authorisation in this project takes form as displaying specific forms or content to users with different roles. Nearly all main pages on this project use authorisation to some degree.
 - Couldinary
+	- Cloudinary offers a cloud service for image uploads that is compatible with the Ruby on Rails framework. It is used in this project to allow Users to upload a photo with an advice question if they have the advisee role on their profile.
 
 
 ## Project Models
 R17 Describe your projects  _models_  in terms of the relationships (active record associations) they have with each other
 
-User, Specialty, Advice and Replies
+User, Topic, Advice Question and Advice Repliy are the main models of this project.
 
-The User model is the primary model in the application. It holds relationships with nearly every other model, depending on the role of the User.
-A User will have either an _Advisor_ or _Advice Taker_ role and these will be mutually exclusive. The User model has a one-to-many relationship with the Specialty model - meaning that one User object can have many specialties, but this will be capped at 3 specialties.
-The Specialty model is the schema for 3 subjects or topics that an Advisor can display on their profile and which Advice Takers can request advice on specifically. Only the specialty (a specialty will be unique) owner will be able to answer any advice requests against the specialty object.
-The User model can have many instances of Advice (Questions) and many instances of the Replies model.
+The User model is the primary model in the application. It holds relationships with nearly every other model.
 
-Due to the roles in the application the Advice model is only connected to the Advice Taker role and the Replies model is only connected to the Advisor model.
+Roles in this app have been created with Rolify, which means they don't have an actual Model but are attached to the Users model through a User Roles table on the database.
 
-The Advice model can have many replies while a Reply model instance belongs to one Advice model instance.
+A User will have either an _Advisor_ or _Advisee_ role and these will be mutually exclusive. The User model has a one-to-many relationship with the Topic model - meaning that one User object can have many Topics, but this will be capped at 3 specialties.
+
+The Topic model is the schema for the 3 subjects or topics that an Advisor can create and which Advice Takers (aka Advisees) can request advice on specifically (by asking Advice Questions on the topic). Only the topic (a topic will be unique) owner will be able to answer any advice questions in the topic. The Topic model also belongs to the User model.
+
+The User model can have many instances of Advice Questions and many instances of the Advice Replies model. Advice Questions also belong to the Topic model (aka to a Topic object).
+
+A Topic can have many Advice Question objects. And an Advice Questions can have many Advice Replies.
+
+The Advice Reply model belongs to the User model and to the Advice Question model.
+
+All child associations (aka belongs to associations) have a dependent destroy relationship, meaning that for example, if a Topic is deleted by its User (owner), all of the Advice Questions and Advice Replies connected with it will also be deleted.
+
 
 ## DB Relations/Schema
 R18 Discuss the database relations to be implemented in your application
+
+
 
 R19 Provide your database schema design
 
 ## Task Allocation
 R20 Describe the way tasks are allocated and tracked in your project
+
+After the creation of User Stories, To Do cards were created to determine all actions needed to be taken in order for the project to begin. The main software used to track all of these actions items was Github Projects through a Kanban methodology. This is what the initial kanban looked like before the project began:
+![day zero](docs/project_1.png)
+
+
+It was then decided that the backend should be completed first as it held the greates value in the project. This decision led to the following In Progress column, with tasks being completed from top to bottom as it reflected the order that App projects needed to be built in:
+![day one](docs/project_2.png)
+
+
+Here are progress shots:
+- [backend progress shot 1](docs/project_3.png)
+- [completing backend](docs/project_4.png)
+
+
+Afterwards, the frontend was the focus as well as the Image uploading functionality. A seed file was also created to hold information so that the site could properly be visualised. Apart from the Image Upload functionality, the front-end design aspect of the project did not hold as much priority as the back-end and was as such left for after the back-end was completed.
+Here is what the kanban of the project looked like 2 days before the due date:
+![second_last_day](docs/project_5.png)
+
+The last day before submitting held the creation of the presentation and finalisation of the documentation. The documentation was written from the beginning of the project so as to prevent a build up of work in the last day prior to submitting the project. This is what the kanban looked like before submitting:
+![last_day](docs/project_6.png)
