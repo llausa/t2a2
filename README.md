@@ -1,7 +1,7 @@
 # T2A2 - Marketplace Project
 
 ## Status
-	Completed! Check out the links below to see the project live (objective bystander) or the code base (github)
+Completed! Check out the links below to see the project live (objective bystander) or the code base (github)
 
 ## The Project can be found here:
 - [Github](https://github.com/llausa/t2a2)
