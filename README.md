@@ -135,9 +135,25 @@ All child associations (aka belongs to associations) have a dependent destroy re
 ## DB Relations/Schema
 R18 Discuss the database relations to be implemented in your application
 
+The User model/table will hold the most relations to other models/tables. To begin with, the User and Role tables will be connected to each other through User_id and Role_id.
 
+The User table/model then branches out and connects to the following tables:
+Topic, Advice_Question, Advice_Reply
+
+These three models/tables connect to User through User_id.
+
+The Topic model/table will connect to the Advice_Question model/table through Topic_id.
+
+Advice Questions and Advice Replies come next and Advice Reply model/table connects to Advice Question through Advice_Question_id.
+
+Finally we have the Image uploading functionality and its relations to the two tables created by Cloudinary.
+
+Rails Active Storage connects with Active Storage Blobs through active_storage_blobs_id.
+
+To see a visualisation of the connections above please look at the image below.
 
 R19 Provide your database schema design
+![db_schema](docs/db_schema.png)
 
 ## Task Allocation
 R20 Describe the way tasks are allocated and tracked in your project
